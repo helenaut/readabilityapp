@@ -36,4 +36,18 @@
     return [NSString stringWithFormat:@"%ld%@", (long)num, ending];
 }
 
++(NSString*)omitHTMLPrefix:(NSString*)url{
+    NSArray *htmlComponents = [url componentsSeparatedByString:@"www."];
+    if ([htmlComponents count] > 1) {
+        return htmlComponents[1];
+    }
+    
+    htmlComponents = [url componentsSeparatedByString:@"://"];
+    if ([htmlComponents count] > 1) {
+        return htmlComponents[1];
+    }
+    
+    return url;
+}
+
 @end

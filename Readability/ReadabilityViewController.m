@@ -11,6 +11,8 @@
 
 #define RESULT_TEXT @"Reading Level: %@ Grade"
 
+
+
 @interface ReadabilityViewController () <NSURLConnectionDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate> {
     NSURLConnection *currentConnection;
 }
@@ -35,12 +37,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.resultLabel.hidden = YES;
     self.loadingView.hidden = YES;
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         self.takePicButton.hidden = YES;
     }
+    
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {

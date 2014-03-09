@@ -23,6 +23,8 @@
 		794CA81418CC05E100AAD410 /* ReadabilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 794CA81318CC05E100AAD410 /* ReadabilityTests.m */; };
 		794CA81F18CC230F00AAD410 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 794CA81E18CC230F00AAD410 /* Util.m */; };
 		794CA82218CC2CED00AAD410 /* PastSearchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794CA82118CC2CED00AAD410 /* PastSearchesViewController.m */; };
+		794CA82D18CC8F1000AAD410 /* ReadablityTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794CA82C18CC8F1000AAD410 /* ReadablityTabBarViewController.m */; };
+		794CA82F18CC96EF00AAD410 /* PastSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 794CA82E18CC96EF00AAD410 /* PastSearchTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,9 @@
 		794CA81E18CC230F00AAD410 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		794CA82018CC2CED00AAD410 /* PastSearchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PastSearchesViewController.h; sourceTree = "<group>"; };
 		794CA82118CC2CED00AAD410 /* PastSearchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PastSearchesViewController.m; sourceTree = "<group>"; };
+		794CA82B18CC8F1000AAD410 /* ReadablityTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReadablityTabBarViewController.h; path = ../ReadablityTabBarViewController.h; sourceTree = "<group>"; };
+		794CA82C18CC8F1000AAD410 /* ReadablityTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReadablityTabBarViewController.m; path = ../ReadablityTabBarViewController.m; sourceTree = "<group>"; };
+		794CA82E18CC96EF00AAD410 /* PastSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PastSearchTableViewCell.xib; path = ../PastSearchTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +123,9 @@
 		794CA7EB18CC05E100AAD410 /* Readability */ = {
 			isa = PBXGroup;
 			children = (
+				794CA82E18CC96EF00AAD410 /* PastSearchTableViewCell.xib */,
+				794CA82B18CC8F1000AAD410 /* ReadablityTabBarViewController.h */,
+				794CA82C18CC8F1000AAD410 /* ReadablityTabBarViewController.m */,
 				794CA7F418CC05E100AAD410 /* ReadabilityAppDelegate.h */,
 				794CA7F518CC05E100AAD410 /* ReadabilityAppDelegate.m */,
 				794CA7F718CC05E100AAD410 /* Main_iPhone.storyboard */,
@@ -243,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				794CA80118CC05E100AAD410 /* Images.xcassets in Resources */,
+				794CA82F18CC96EF00AAD410 /* PastSearchTableViewCell.xib in Resources */,
 				794CA7F918CC05E100AAD410 /* Main_iPhone.storyboard in Resources */,
 				794CA7F018CC05E100AAD410 /* InfoPlist.strings in Resources */,
 			);
@@ -265,6 +274,7 @@
 			files = (
 				794CA82218CC2CED00AAD410 /* PastSearchesViewController.m in Sources */,
 				794CA7FF18CC05E100AAD410 /* ReadabilityViewController.m in Sources */,
+				794CA82D18CC8F1000AAD410 /* ReadablityTabBarViewController.m in Sources */,
 				794CA7F218CC05E100AAD410 /* main.m in Sources */,
 				794CA7F618CC05E100AAD410 /* ReadabilityAppDelegate.m in Sources */,
 				794CA81F18CC230F00AAD410 /* Util.m in Sources */,

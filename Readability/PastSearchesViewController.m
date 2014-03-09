@@ -8,8 +8,17 @@
 
 #import "PastSearchesViewController.h"
 #import "Util.h"
+#import <MessageUI/MessageUI.h>
 
-@interface PastSearchesViewController ()
+@interface PastSearchTableViewCell ()
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (strong, nonatomic) IBOutlet UILabel *linkLabel;
+@end
+
+@implementation PastSearchTableViewCell
+@end
+
+@interface PastSearchesViewController () <MFMailComposeViewControllerDelegate>
 @property (nonatomic, strong) NSMutableDictionary *resultsDict;
 @property (nonatomic, strong) NSArray *resultsKeys;
 
@@ -31,17 +40,22 @@
 {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if ([MFMessageComposeViewController canSendText]) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Email" style:UIBarButtonItemStylePlain target:self action:@selector(sendEmail)];
+    }
+    
+    [self.navigationController.navigationBar setBarTintColor:UIColorFromRGB(YELLOW)];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : UIColorFromRGB(RED)};
 
 
+    [self.tableView registerNib:[UINib nibWithNibName:@"PastSearchTableViewCell" bundle:nil] forCellReuseIdentifier:@"PastSearchTableViewCell"];
+
+    
     // Return the number of rows in the section.
     self.resultsDict = [[[NSUserDefaults standardUserDefaults] objectForKey:@"resultsDict"] mutableCopy];
     self.resultsKeys = [self.resultsDict allKeys];
+    [self.tableView setBackgroundColor:UIColorFromRGB(BLUE)];
     [self.tableView reloadData];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -71,24 +85,42 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"PastSearchCell";
+    static NSString *CellIdentifier = @"PastSearchTableViewCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
    
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        // Load the top-level objects from the custom cell XIB.
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"PastSearchTableViewCell" owner:self options:nil];
+        // Grab a pointer to the first object (presumably the custom cell, as that's all the XIB should contain).
+        cell = [topLevelObjects objectAtIndex:0];
+
         
     }
     NSString *link = self.resultsKeys[indexPath.row];
-    NSString *score = [Util ordinalNum:[self.resultsDict[link] integerValue]];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", score, link];
+    //cell.link = [NSString stringWithFormat:@"%@: %@", score, link];
+    if ([cell isKindOfClass:[PastSearchTableViewCell class]]){
+        ((PastSearchTableViewCell*)cell).scoreLabel.text = [self.resultsDict[link] stringValue];
+        ((PastSearchTableViewCell*)cell).linkLabel.text = [Util omitHTMLPrefix:link];
+    }
+    
+    if (indexPath.row % 3 == 0) {
+        cell.backgroundColor = UIColorFromRGB(ORANGE);
+    } else if (indexPath.row % 3 == 1) {
+        cell.backgroundColor = UIColorFromRGB(BLUE);
+    } else {
+        cell.backgroundColor = UIColorFromRGB(RED);
+    }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.resultsKeys[indexPath.row]]];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50.0;
 }
 
 
@@ -118,6 +150,59 @@
     }   
 }
 
+- (void) sendEmail {
+    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+    if(mc){
+        NSString *emailTitle = @"Your Readability List";
+        
+        
+        NSString *messageBody = [self emailContents];
+        
+        mc.mailComposeDelegate = self;
+        [mc setSubject:emailTitle];
+        [mc setMessageBody:messageBody isHTML:NO];
+        
+        // Present mail view controller on screen
+        [self presentViewController:mc animated:YES completion:NULL];
+    }
+
+    
+    
+}
+
+-(NSString*) emailContents {
+    NSMutableString *contents = [@"Your readability scores for the following links:\n\n" mutableCopy];
+    for (NSString *link in self.resultsKeys) {
+        [contents appendString: [NSString stringWithFormat:@"%@: %@\n", self.resultsDict[link], link]];
+    }
+    return contents;
+}
+
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail sent");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail sent failure: %@", [error localizedDescription]);
+            break;
+        default:
+            break;
+    }
+    
+    // Close the Mail Interface
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+
 
 /*
 // Override to support rearranging the table view.
@@ -146,5 +231,7 @@
 }
 
  */
+                                             
+                                             
 
 @end

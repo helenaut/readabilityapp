@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@interface PastSearchTableViewCell : UITableViewCell 
+
+@end
+
 @interface PastSearchesViewController : UITableViewController
 
 @end
