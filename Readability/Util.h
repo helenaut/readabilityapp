@@ -16,4 +16,5 @@
 @interface Util : NSObject
 +(NSString*)ordinalNum:(NSInteger)num;
 +(NSString*)omitHTMLPrefix:(NSString*)url;
++(NSString*)addHTMLPrefix:(NSString*) url;
 @end

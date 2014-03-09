@@ -50,4 +50,13 @@
     return url;
 }
 
++(NSString*)addHTMLPrefix:(NSString*) url{
+    if ([url rangeOfString:@"http://"].location == NSNotFound) {
+        return [NSString stringWithFormat:@"%@%@", @"http://", url];
+    } else {
+        return url;
+    }
+
+}
+
 @end

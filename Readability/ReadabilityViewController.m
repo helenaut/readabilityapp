@@ -10,7 +10,7 @@
 #import "Util.h"
 
 #define RESULT_TEXT @"Reading Level: %@ Grade"
-
+#define RESULT_DEFAULT_TEXT @"Should your kids really be reading that?"
 
 
 @interface ReadabilityViewController () <NSURLConnectionDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate> {
@@ -41,6 +41,7 @@
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         self.takePicButton.hidden = YES;
     }
+    [self.linkTextField setBackgroundColor:[UIColor whiteColor]];
     
 }
 
@@ -54,7 +55,7 @@
 
 - (IBAction)submitLink:(id)sender {
     self.loadingView.hidden = NO;
-    self.resultLabel.hidden = YES;
+    self.resultLabel.text = RESULT_DEFAULT_TEXT;
     [self.view endEditing:YES];
     if (self.resultsDict[self.linkTextField.text]) {
         [self updateViewWithScore:[self.resultsDict[self.linkTextField.text] integerValue]];
@@ -64,7 +65,7 @@
                                         requestWithURL:[NSURL URLWithString:@"http://readabilityscore.herokuapp.com/score"]
                                         cachePolicy:NSURLRequestUseProtocolCachePolicy
                                         timeoutInterval:30];
-        NSDictionary *requestData = @{@"link":self.linkTextField.text};
+        NSDictionary *requestData = @{@"link":[Util addHTMLPrefix:self.linkTextField.text]};
         NSError *error;
         NSData *postData = [NSJSONSerialization dataWithJSONObject:requestData options:0 error:&error];
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -86,12 +87,18 @@
     [[[UIAlertView alloc] initWithTitle:@"We're Sorry" message:@"We're sorry, but we were unable to analyze your article." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
 
+- (IBAction)didTapView:(id)sender {
+    [self.view endEditing:YES];
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSLog(@"URL Connection Finished Loading");
     currentConnection = nil;
-    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:self.data options:0 error:nil];
-    NSString *score = jsonDict[@"score"];
-    [self updateViewWithScore:[score integerValue]];
+    if (self.data) {
+        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:self.data options:0 error:nil];
+        NSString *score = jsonDict[@"score"];
+        [self updateViewWithScore:[score integerValue]];
+    }
     self.loadingView.hidden = YES;
 }
 
@@ -99,7 +106,6 @@
     if (score > 0) {
         self.resultsDict[self.linkTextField.text] = @(score);
         [self persistData];
-        self.resultLabel.hidden = NO; // unhide results
         self.resultLabel.text = [NSString stringWithFormat:RESULT_TEXT, [Util ordinalNum:score]];
         self.linkTextField.text = @""; // reset text field
     } else {
