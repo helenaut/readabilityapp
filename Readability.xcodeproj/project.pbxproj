@@ -14,7 +14,6 @@
 		794CA7F218CC05E100AAD410 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 794CA7F118CC05E100AAD410 /* main.m */; };
 		794CA7F618CC05E100AAD410 /* ReadabilityAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 794CA7F518CC05E100AAD410 /* ReadabilityAppDelegate.m */; };
 		794CA7F918CC05E100AAD410 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 794CA7F718CC05E100AAD410 /* Main_iPhone.storyboard */; };
-		794CA7FC18CC05E100AAD410 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 794CA7FA18CC05E100AAD410 /* Main_iPad.storyboard */; };
 		794CA7FF18CC05E100AAD410 /* ReadabilityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794CA7FE18CC05E100AAD410 /* ReadabilityViewController.m */; };
 		794CA80118CC05E100AAD410 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 794CA80018CC05E100AAD410 /* Images.xcassets */; };
 		794CA80818CC05E100AAD410 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794CA80718CC05E100AAD410 /* XCTest.framework */; };
@@ -22,6 +21,8 @@
 		794CA80A18CC05E100AAD410 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794CA7E918CC05E100AAD410 /* UIKit.framework */; };
 		794CA81218CC05E100AAD410 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 794CA81018CC05E100AAD410 /* InfoPlist.strings */; };
 		794CA81418CC05E100AAD410 /* ReadabilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 794CA81318CC05E100AAD410 /* ReadabilityTests.m */; };
+		794CA81F18CC230F00AAD410 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 794CA81E18CC230F00AAD410 /* Util.m */; };
+		794CA82218CC2CED00AAD410 /* PastSearchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794CA82118CC2CED00AAD410 /* PastSearchesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +47,6 @@
 		794CA7F418CC05E100AAD410 /* ReadabilityAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReadabilityAppDelegate.h; sourceTree = "<group>"; };
 		794CA7F518CC05E100AAD410 /* ReadabilityAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReadabilityAppDelegate.m; sourceTree = "<group>"; };
 		794CA7F818CC05E100AAD410 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		794CA7FB18CC05E100AAD410 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		794CA7FD18CC05E100AAD410 /* ReadabilityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReadabilityViewController.h; sourceTree = "<group>"; };
 		794CA7FE18CC05E100AAD410 /* ReadabilityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReadabilityViewController.m; sourceTree = "<group>"; };
 		794CA80018CC05E100AAD410 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -55,6 +55,10 @@
 		794CA80F18CC05E100AAD410 /* ReadabilityTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ReadabilityTests-Info.plist"; sourceTree = "<group>"; };
 		794CA81118CC05E100AAD410 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		794CA81318CC05E100AAD410 /* ReadabilityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReadabilityTests.m; sourceTree = "<group>"; };
+		794CA81D18CC230F00AAD410 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		794CA81E18CC230F00AAD410 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		794CA82018CC2CED00AAD410 /* PastSearchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PastSearchesViewController.h; sourceTree = "<group>"; };
+		794CA82118CC2CED00AAD410 /* PastSearchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PastSearchesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,11 +121,14 @@
 				794CA7F418CC05E100AAD410 /* ReadabilityAppDelegate.h */,
 				794CA7F518CC05E100AAD410 /* ReadabilityAppDelegate.m */,
 				794CA7F718CC05E100AAD410 /* Main_iPhone.storyboard */,
-				794CA7FA18CC05E100AAD410 /* Main_iPad.storyboard */,
+				794CA82018CC2CED00AAD410 /* PastSearchesViewController.h */,
+				794CA82118CC2CED00AAD410 /* PastSearchesViewController.m */,
 				794CA7FD18CC05E100AAD410 /* ReadabilityViewController.h */,
 				794CA7FE18CC05E100AAD410 /* ReadabilityViewController.m */,
 				794CA80018CC05E100AAD410 /* Images.xcassets */,
 				794CA7EC18CC05E100AAD410 /* Supporting Files */,
+				794CA81D18CC230F00AAD410 /* Util.h */,
+				794CA81E18CC230F00AAD410 /* Util.m */,
 			);
 			path = Readability;
 			sourceTree = "<group>";
@@ -203,6 +210,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = JEHM;
 				TargetAttributes = {
+					794CA7E118CC05E100AAD410 = {
+						DevelopmentTeam = X4X73B8MGR;
+					};
 					794CA80518CC05E100AAD410 = {
 						TestTargetID = 794CA7E118CC05E100AAD410;
 					};
@@ -232,7 +242,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				794CA7FC18CC05E100AAD410 /* Main_iPad.storyboard in Resources */,
 				794CA80118CC05E100AAD410 /* Images.xcassets in Resources */,
 				794CA7F918CC05E100AAD410 /* Main_iPhone.storyboard in Resources */,
 				794CA7F018CC05E100AAD410 /* InfoPlist.strings in Resources */,
@@ -254,9 +263,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				794CA82218CC2CED00AAD410 /* PastSearchesViewController.m in Sources */,
 				794CA7FF18CC05E100AAD410 /* ReadabilityViewController.m in Sources */,
 				794CA7F218CC05E100AAD410 /* main.m in Sources */,
 				794CA7F618CC05E100AAD410 /* ReadabilityAppDelegate.m in Sources */,
+				794CA81F18CC230F00AAD410 /* Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,14 +304,6 @@
 				794CA7F818CC05E100AAD410 /* Base */,
 			);
 			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		794CA7FA18CC05E100AAD410 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				794CA7FB18CC05E100AAD410 /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		794CA81018CC05E100AAD410 /* InfoPlist.strings */ = {
@@ -393,10 +396,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Readability/Readability-Prefix.pch";
 				INFOPLIST_FILE = "Readability/Readability-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -406,10 +412,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Readability/Readability-Prefix.pch";
 				INFOPLIST_FILE = "Readability/Readability-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
